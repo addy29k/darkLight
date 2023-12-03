@@ -37,6 +37,7 @@ class Product(models.Model):
     short_description = models.TextField(verbose_name="Short Description")
     detail_description = models.TextField(blank=True, null=True, verbose_name="Detail Description")
     product_image = models.ImageField(upload_to='product', blank=True, null=True, verbose_name="Product Image")
+    product_file = models.FileField(upload_to='product', blank=True, null=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     category = models.ForeignKey(Category, verbose_name="Product Categoy", on_delete=models.CASCADE)
     is_active = models.BooleanField(verbose_name="Is Active?")
@@ -86,5 +87,4 @@ class Order(models.Model):
     status = models.CharField(
         choices=STATUS_CHOICES,
         max_length=50,
-        default="Pending"
-        )
+        default="Pending"     )
